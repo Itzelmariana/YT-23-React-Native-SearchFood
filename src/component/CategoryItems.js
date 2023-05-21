@@ -1,12 +1,22 @@
 import { View, Text, StyleSheet, Image } from 'react-native';
+import { useState } from 'react';
+import Header from './Search';
 
-export default function CategoryItems() {
+export default function CategoryItems({ name, imgUrl, index, active }) {
   return (
-    <View style={styles.container}>
-      <View>
-        <Image source={require('../images/burger.png')} style={styles.image} />
+    <View
+      style={[
+        styles.container,
+        index === 0 ? { marginLeft: 25 } : { marginLeft: 15 },
+        active
+          ? { backgroundColor: 'rgb(241,186,87' }
+          : { backgroundColor: 'white' },
+      ]}
+    >
+      <View style={styles.imageContainer}>
+        <Image source={imgUrl} style={styles.image} />
       </View>
-      <Text>Burger</Text>
+      <Text style={styles.header}>{name}</Text>
     </View>
   );
 }
@@ -19,7 +29,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
-
+    backgroundColor: 'white',
     shadowColor: 'black',
     shadowOffset: { width: 5, height: 5 },
     elevation: 3,
@@ -29,5 +39,17 @@ const styles = StyleSheet.create({
   image: {
     width: 35,
     height: 35,
+  },
+  imageContainer: {
+    width: 50,
+    height: 50,
+    backgroundColor: 'white',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 50,
+    marginBottom: 5,
+  },
+  header: {
+    fontWeight: 'bold',
   },
 });
