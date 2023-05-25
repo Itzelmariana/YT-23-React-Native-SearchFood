@@ -128,3 +128,4 @@ dist
 .DS_Store
 .expo/README.md
 .expo/devices.json
+src/api/yelp.js
